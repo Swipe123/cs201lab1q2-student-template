@@ -68,16 +68,13 @@ public class SinglyLinkedList<E> {
     // Write your codes below
     public String toString(){
      
-        StringBuilder sb = new StringBuilder("[");
-        Node<E> walk = head;
-        while (walk != null) {
-            sb.append(walk.getElement());
-            if (walk.getNext() != null) {
-                sb.append(", ");
-            }
-            walk = walk.getNext();
+        StringBuilder sb = new StringBuilder();
+        Node<E> current = head;
+        while (current != null) {
+            sb.append(current.getElement());
+            sb.append(" ");
+            current = current.getNext();
         }
-        sb.append("]");
         return sb.toString();
     }
 
@@ -111,7 +108,7 @@ public class SinglyLinkedList<E> {
 
         Node<E> prev = null;
         Node<E> current = head;
-        tail = head; // the old head becomes the new tail
+        tail = head; 
 
         while (current != null){
             Node<E> next = current.getNext();
@@ -120,6 +117,6 @@ public class SinglyLinkedList<E> {
             current = next;
         }
 
-        head = prev; // the old tail becomes the new head
+        head = prev;
     }           
 }
