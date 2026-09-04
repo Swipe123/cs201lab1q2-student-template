@@ -72,9 +72,6 @@ public class SinglyLinkedList<E> {
         Node<E> current = head;
         while (current != null) {
             sb.append(current.getElement());
-            if (current.getNext() != null) {
-                sb.append(" ");
-            }
             current = current.getNext();
         }
         return sb.toString();
