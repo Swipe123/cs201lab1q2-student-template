@@ -68,13 +68,58 @@ public class SinglyLinkedList<E> {
     // Write your codes below
     public String toString(){
      
+        StringBuilder sb = new StringBuilder("[");
+        Node<E> walk = head;
+        while (walk != null) {
+            sb.append(walk.getElement());
+            if (walk.getNext() != null) {
+                sb.append(", ");
+            }
+            walk = walk.getNext();
+        }
+        sb.append("]");
+        return sb.toString();
     }
 
     public E removeLast(){
-      
+
+        if (isEmpty()){
+            return null;
+        }
+
+        E answer = tail.getElement();
+
+        if (size == 1){
+            // only one element in the list
+            head = null;
+            tail = null;
+        } else {
+            // walk to the node just before the current tail
+            Node<E> walk = head;
+            while (walk.getNext() != tail){
+                walk = walk.getNext();
+            }
+            walk.setNext(null);
+            tail = walk;
+        }
+
+        size--;
+        return answer;
     }
 
     public void reverse(){       
-                 
-    }
+
+        Node<E> prev = null;
+        Node<E> current = head;
+        tail = head; // the old head becomes the new tail
+
+        while (current != null){
+            Node<E> next = current.getNext();
+            current.setNext(prev);
+            prev = current;
+            current = next;
+        }
+
+        head = prev; // the old tail becomes the new head
+    }           
 }
